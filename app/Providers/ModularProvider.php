@@ -54,8 +54,22 @@ class ModularProvider extends ServiceProvider
         }
 
         $this->app['view']->addNamespace('Pub', base_path().'/resources/views/Pub');
+        $this->app['view']->addNamespace('Admin', base_path().'/resources/views/Admin');
     }
 
+    /**
+     * Получает веб-маршруты для указанного модуля и подмодуля.
+     *
+     * Этот метод получает веб-маршруты из файла web.php для указанного модуля и подмодуля.
+     * Он проверяет наличие файла маршрутов и, в зависимости от настроек модуля, создает
+     * группу маршрутов с префиксом и middleware или добавляет маршруты без группы.
+     *
+     * @param string $mod Имя модуля.
+     * @param string $sub Имя подмодуля.
+     * @param string $relativePath Относительный путь к папке с модулем и подмодулем.
+     * @param string $path Абсолютный путь к папке с модулем.
+     * @return void
+     */
     private function getWebRoutes($mod, $sub, $relativePath, $path)
     {
         $routesPath = $path.$relativePath.'/Routes/web.php';
@@ -81,6 +95,18 @@ class ModularProvider extends ServiceProvider
         }
     }
 
+    /**
+     * Получает API-маршруты для указанного модуля и подмодуля.
+     *
+     * Этот метод получает API-маршруты из файла api.php для указанного модуля и подмодуля.
+     * Он проверяет наличие файла маршрутов и создает группу маршрутов с префиксом и middleware.
+     *
+     * @param string $mod Имя модуля.
+     * @param string $sub Имя подмодуля.
+     * @param string $relativePath Относительный путь к папке с модулем и подмодулем.
+     * @param string $path Абсолютный путь к папке с модулем.
+     * @return void
+     */
     private function getApiRoutes($mod, $sub, $relativePath, $path)
     {
         $routesPath = $path.$relativePath.'/Routes/api.php';
@@ -98,6 +124,16 @@ class ModularProvider extends ServiceProvider
         }
     }
 
+    /**
+     * Получает middleware для указанного модуля и ключа.
+     *
+     * Этот метод получает middleware для указанного модуля и ключа (web или api) из конфигурации.
+     * Он собирает middleware из конфигурации для соответствующего модуля и ключа.
+     *
+     * @param string $mod Имя модуля.
+     * @param string $key Ключ для поиска middleware.
+     * @return array Массив middleware для указанного модуля и ключа.
+     */
     private function getMiddleware($mod, $key = 'web')
     {
         $middleware = [];

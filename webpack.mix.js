@@ -11,7 +11,9 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix.combine([
+    'resources/assets/plugins/fontawesome-free/css/all.min.css',
+    'resources/assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css',
+    'resources/assets/dist/css/adminlte.min.css',
+    'resources/assets/demo.css',
+], 'public/assets/css/api.css');

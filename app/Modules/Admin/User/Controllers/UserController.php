@@ -5,6 +5,7 @@ namespace App\Modules\Admin\User\Controllers;
 use App\Modules\Admin\User\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -15,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        dump(Auth::user());
     }
 
     /**
