@@ -30,14 +30,14 @@ class LoginController extends Controller
             return ResponseService::sendJsonResponse(
                 false,
                 403,
-                ['message' => __('auth.login_error')],
+                ['message' => __('auth.login_error')]
             );
         }
 
         $user = $request->user();
 
         $tokenResult = $user->createToken('Personal Access Token');
-
+        var_dump($tokenResult);
         return ResponseService::sendJsonResponse(
             true,
             200,

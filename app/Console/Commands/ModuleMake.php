@@ -412,7 +412,6 @@ class ModuleMake extends Command
             'show',
         ]);
 
-        //str_replace('\\', '/', $name)
         $paths = $arrFiles->map(function($item) use ($name){
             return base_path('resources/views/'.str_replace('\\', '/', $name).'/'.$item.".blade.php");
         });

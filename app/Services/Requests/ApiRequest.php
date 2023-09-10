@@ -15,7 +15,7 @@ class ApiRequest extends FormRequest
     /**
      * Handle a failed validation attempt.
      *
-     * @param  Validator  $validator
+     * @param  \Illuminate\Contracts\Validation\Validator  $validator
      * @return void
      *
      * @throws \Illuminate\Validation\ValidationException
@@ -29,7 +29,7 @@ class ApiRequest extends FormRequest
             ResponseService::sendJsonResponse(
                 false,
                 JsonResponse::HTTP_UNPROCESSABLE_ENTITY,
-                $errors,
+                $errors
             )
         );
     }
